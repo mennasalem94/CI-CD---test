@@ -22,9 +22,9 @@ jobs:
 
 
   workflows:
-    jobs:
-      welcome/run
+    welcome:
+      jobs:
         - print-hello
-        - print-world
+        - print-world:
             requires:
               - print-hello
