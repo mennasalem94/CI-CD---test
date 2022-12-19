@@ -21,3 +21,13 @@ jobs:
           at: ~/
       - run:
           cat output.txt
+
+
+workflows:
+  sharing files:
+    jobs:
+      - save_hello_world_output
+      - print output file: 
+          requirs:
+            - save_hello_world_output
+
