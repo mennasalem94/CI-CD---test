@@ -1,16 +1,5 @@
 version: 2.1
 jobs:
-  print-hello:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo hello
-
-  print-world:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo world
   build:
     docker:
       - image: circleci/node:13.8.0
@@ -18,13 +7,10 @@ jobs:
       - run:
           name: "echo and env var that is part of our project"
           command: |
-            echo $MY_ENV_VAR
+            echo $My_Env_Var
 
 
   workflows:
     welcome:
       jobs:
-        - print-hello
-        - print-world:
-            requires:
-              - print-hello
+        - build
