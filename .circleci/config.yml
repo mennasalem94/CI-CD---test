@@ -22,7 +22,7 @@ jobs:
 
 
   workflows:
-    welcome:
+    welcome/run:
       jobs:
         - print-hello
         - print-world
