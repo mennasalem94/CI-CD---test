@@ -10,7 +10,7 @@ jobs:
             echo $My_Env_Var
 
 
-  workflows:
-    welcome:
-      jobs:
-        - build
+workflows:
+  test_env_var:
+    jobs:
+      - build
