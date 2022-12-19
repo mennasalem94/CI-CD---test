@@ -1,16 +1,23 @@
 version: 2.1
+
 jobs:
-  build:
+  save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - run:
-          name: "echo and env var that is part of our project"
-          command: |
-            echo $My_Env_Var
+          echo "hello world" > ~/output.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - output.txt
+      
 
-
-workflows:
-  test_env_var:
-    jobs:
-      - build
+  print output file:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          cat output.txt
